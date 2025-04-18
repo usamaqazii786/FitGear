@@ -33,10 +33,6 @@ export default function CartPage() {
     const result = stripe?.redirectToCheckout({
       sessionId:session.id
     });
-
-    if (result.error) {
-      console.log(result.error)
-    }
   }
 
   return (
