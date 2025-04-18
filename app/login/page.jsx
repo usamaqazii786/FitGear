@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from 'react';
-import { useNavigate } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
@@ -9,14 +9,14 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const LogIn = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     const auth = localStorage.getItem("users");
     if (auth) {
-      navigate("/");
+      router.push("/");
     }
-  }, [navigate]);
+  }, [router]);
 
   const initialValues = {
     email: '',
@@ -41,7 +41,7 @@ const LogIn = () => {
       console.log(result,'result')
        if (result.auth) {
         localStorage.setItem('token', JSON.stringify(result?.auth));
-        navigate("/");
+        router.push("/");
       } 
       else {
         setErrors({ password: 'Please enter correct details' });
@@ -59,7 +59,7 @@ const LogIn = () => {
    try {
     if (result.user) {
       localStorage.setItem('users', JSON.stringify(result?.user));
-      navigate("/");
+      router.push("/");
     }  
    } catch (error) {
     console.log(error);
@@ -82,7 +82,7 @@ const LogIn = () => {
   //       console.log('User Data:', data);
   //       localStorage.setItem('user', JSON.stringify(data.user));
   //       localStorage.setItem('token', token);
-  //       navigate('/');
+  //       router.push('/');
   //     })
   //     .catch((error) => console.error('Error:', error));
   // };
