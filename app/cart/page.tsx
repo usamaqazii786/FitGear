@@ -22,6 +22,7 @@ export default function CartPage() {
     const header = {
       "Content-Type":"application/json"
     }
+    
     const reponse = await fetch("http://localhost:5001/api/create-checkout-session", {
       method:"POST",
       headers:header,
