@@ -11,6 +11,7 @@ const SignUp = () => {
   const router = useRouter();
 
   // Formik setup with validation schema
+  
   const formik = useFormik({
     initialValues: {
       name: '',
